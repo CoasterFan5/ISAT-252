@@ -1,5 +1,10 @@
-# ISAT-252
+# ISAT 252
 We love academia.
 
-This repo is structured based on the course. Each folder is a "unit" or a week of classes. Each folder will contain notes and assignments. 
-My goals for each assignment is to write the assignment in python, and then write tests for said assignment for fun. 
+This repo is structured to match the course, and it's content, see below:
+
+- Week Directory (ex. week 1)
+  - Notes.md - notes for the week, anything I feel may be on an assessment, or I just think is worth jotting down. 
+  - assignment directory
+    - tests.py - The tests used to ensure the assignment actually does what it needs to do
+    - *.py - Any other python files are part of the assignment themselves
