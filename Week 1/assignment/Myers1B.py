@@ -9,5 +9,5 @@ def birth_year_to_age(birth_year):
 
 # inputs and stuff
 if __name__ == '__main__':
-    in_year = int(input("Enter a year: "))
-    print("Someone born in " + str(in_year) + " would be " + str(birth_year_to_age(in_year)))
+    in_year = int(input("Enter your birth year: "))
+    print("That makes you", str(birth_year_to_age(in_year)), "years old! ")
