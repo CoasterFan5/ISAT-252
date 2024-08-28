@@ -1,7 +1,7 @@
 import unittest
 import datetime
-from Myers1B import birth_year_to_age
-from Myers1A import fahrenheit_to_celsius
+from Myers2B import birth_year_to_age
+from Myers2A import fahrenheit_to_celsius
 
 current_year = datetime.datetime.now().year
 class MyTestCase(unittest.TestCase):
