@@ -12,6 +12,7 @@ class MyTestCase(unittest.TestCase):
     def test_temp(self):
         self.assertEqual(fahrenheit_to_celsius(67), 19.44)
         self.assertEqual(fahrenheit_to_celsius(74), 23.33)
+        self.assertEqual(fahrenheit_to_celsius(96), 35.56)
 
 
 if __name__ == '__main__':
