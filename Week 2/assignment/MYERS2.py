@@ -1,5 +1,7 @@
 # Animal Guesser
 # Its like 20 questions but with fewer questions and only animals
+from warnings import catch_warnings
+
 
 class Node:
     child_left = None
@@ -24,11 +26,12 @@ class Node:
     def get_right_child(self):
         return self.child_right
 
-    # picker is either one or zero. Zero for left (false), One for right (true)
+    # picker is either one or zero. One for left (true), zero for right (false)
     def get_child(self, picker):
         if picker > 0:
             return self.get_left_child()
-        return self.get_right_child()
+        else:
+            return self.get_right_child()
 
 start_node = Node(True, "Is your animal a herbivore?",
                   #herbivore
@@ -68,7 +71,14 @@ def animal_guess():
     active_node = start_node
     while not has_guessed:
         if active_node.is_question:
-            active_node = active_node.get_child(int(input(active_node.value + " (1 for yes, 0 for no) ")))
+            try:
+                user_input = int(input(active_node.value + " (1 for yes, 0 for no) "))
+                if user_input == 1 or user_input == 0:
+                    active_node = active_node.get_child(user_input)
+                else:
+                    print("Invalid input, try again!")
+            except ValueError:
+                print("Invalid input, try again!")
         else:
             print(active_node.value)
             has_guessed = True
