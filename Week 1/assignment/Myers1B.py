@@ -1,18 +1,13 @@
-import unittest
+# Age Calculator
+# based on the birth year, calculates a users age, ignoring months and days.
+
 import datetime
-from age import birth_year_to_age
-from Myers1A import fahrenheit_to_celsius
 
 current_year = datetime.datetime.now().year
-class MyTestCase(unittest.TestCase):
-    def test_age(self):
-        self.assertEqual(birth_year_to_age(1997), 27 + (current_year - 2024))
-        self.assertEqual(birth_year_to_age(2005), 19 + (current_year - 2024))
-        self.assertEqual(birth_year_to_age(2001), 23 + (current_year - 2024))
-    def test_temp(self):
-        self.assertEqual(-18 < fahrenheit_to_celsius(1) < -17, True)
-        self.assertEqual(21 < fahrenheit_to_celsius(71) < 22, True)
+def birth_year_to_age(birth_year):
+    return current_year - birth_year
 
-
+# inputs and stuff
 if __name__ == '__main__':
-    unittest.main()
+    in_year = int(input("Enter a year: "))
+    print("Someone born in " + str(in_year) + " would be " + str(birth_year_to_age(in_year)))

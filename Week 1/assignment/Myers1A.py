@@ -1,3 +1,6 @@
+# Fahrenheit to Celsius
+# Converts temperature in Fahrenheit to Celsius
+
 def fahrenheit_to_celsius(temp):
     return (5 / 9) * (temp - 32)
 
