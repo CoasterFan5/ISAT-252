@@ -4,9 +4,6 @@ from warnings import catch_warnings
 
 
 class Node:
-    child_left = None
-    child_right = None
-
     def __init__(self, is_question, value, left_node=None, right_node=None):
         self.is_question = is_question
         self.value = value
@@ -18,7 +15,6 @@ class Node:
 
     def set_right_child(self, right_node):
         self.child_right = right_node
-        return self.child_right
 
     def get_left_child(self):
         return self.child_left
@@ -41,7 +37,7 @@ start_node = Node(True, "Is your animal a herbivore?",
                             # does create milk
                             Node(False, "I think your animal is a cow!"),
                             # does not create milk
-                            Node(False, "I think your animal is a pig!")),
+                            Node(False, "I think your animal is a chicken!")),
                        # not a farm animal
                        Node(True, "Is your animal tall?",
                             # tall
