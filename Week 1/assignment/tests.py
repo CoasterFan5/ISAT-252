@@ -10,8 +10,8 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(birth_year_to_age(2005), 19 + (current_year - 2024))
         self.assertEqual(birth_year_to_age(2001), 23 + (current_year - 2024))
     def test_temp(self):
-        self.assertEqual(-18 < fahrenheit_to_celsius(1) < -17, True)
-        self.assertEqual(21 < fahrenheit_to_celsius(71) < 22, True)
+        self.assertEqual(fahrenheit_to_celsius(67), 19.44)
+        self.assertEqual(fahrenheit_to_celsius(74), 23.33)
 
 
 if __name__ == '__main__':

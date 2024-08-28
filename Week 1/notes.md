@@ -79,7 +79,7 @@
     - Simple Output
       - Most common is a `print("this is an out")`
       - Can also use basic escape stuff
-      - Casting is not a thing, use methods like `str()`
+      - Casting is weird, use methods like `str()`
     - Simple input
       - Use `input()`
       - Use casting methods `age = int(input("enter age"))`
