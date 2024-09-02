@@ -1,7 +1,5 @@
 # Animal Guesser
 # Its like 20 questions but with fewer questions and only animals
-from warnings import catch_warnings
-
 
 class Node:
     def __init__(self, is_question, value, left_node=None, right_node=None):
