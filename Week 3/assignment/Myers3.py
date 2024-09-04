@@ -59,7 +59,7 @@ start_node = Node(True, "Is your animal a herbivore?",
                     )
                 )
 
-
+# run through the tree to guess the animal, allows us to easily add more questions and animals, as well as handle errors.
 def animal_guess():
     has_guessed = False
     active_node = start_node
