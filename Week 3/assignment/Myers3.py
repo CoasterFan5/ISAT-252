@@ -39,9 +39,9 @@ start_node = Node(True, "Is your animal a herbivore?",
                        # not a farm animal
                        Node(True, "Is your animal tall?",
                             # tall
-                            Node(False, "I think your animal is a giraffe"),
+                            Node(False, "I think your animal is a giraffe!"),
                             #not tall
-                            Node(False, "I think your animal is a koala")),),
+                            Node(False, "I think your animal is a koala!")),),
                   # eats meat
                   Node(True,"Is your animal extinct?",
                        # is extinct
@@ -76,6 +76,7 @@ def animal_guess():
         else:
             print(active_node.value)
             has_guessed = True
+            return active_node.value
 
 if __name__ == '__main__':
     animal_guess()
