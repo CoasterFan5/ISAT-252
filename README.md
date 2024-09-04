@@ -1,5 +1,5 @@
 # ISAT 252
-We love academia.
+Course work for ISAT 252. Notes included!
 
 This repo is structured to match the course, and it's content, see below:
 
