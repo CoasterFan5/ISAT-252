@@ -1,5 +1,5 @@
 # Author: Dylan Myers
-# Description: Count things for strings
+# Description: Count certain metrics for strings
 # Tests: tests.py
 
 
@@ -17,8 +17,14 @@ def myers4(user_input):
     non_alpha: int = 0
 
 
-    word_count: int = len(user_input.split(" "))
+    word_count: int = 0
+
     # we love word counts
+    for word in user_input.split(" "):
+        for letter in word:
+            if letter.isalpha():
+                word_count += 1
+                break
 
     most_common_char_count = 0
     most_common_char = ""
