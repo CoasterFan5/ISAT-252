@@ -29,3 +29,15 @@ if "a" in line_of_text:
             break
 else:
     print("Not Found")
+
+# I do not know where this is going
+my = "lumberjack"
+print(my[-1]) # this is allowed
+print(my[0:-5]) # this is also allowed
+print(my[0:100]) #this is fine
+# print(my[5:3]) # this just does nothing???
+# print(my[33]) # This is too far, python errors
+
+for align, text in zip('<^>', ['left', 'center', 'right']):
+    print(align, text)
+    print('{0:{fill}{align}16}'.format(text, fill=align, align=align))
