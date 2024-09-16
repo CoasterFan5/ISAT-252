@@ -50,17 +50,21 @@ if __name__ == '__main__':
 
         input("Enter anything to test function")
         code_editor = open("./code_editor.txt", "r")
-        code_parser = open("./code_parser.py", "w")
+        code_parser = open("./code_parser", "w")
         code_parser.write("")
 
-        code_parser = open("./code_parser.py", "a")
+        code_parser = open("./code_parser", "a")
         code_editor_content = code_editor.read()
         code_parser.write(code_editor_content)
         code_parser.write("\ntest(main)")
         code_parser.close()
 
-        code_parser_read = open("./code_parser.py", "r")
-        exec(code_parser_read.read(), {"test": test})
+        code_parser_read = open("./code_parser", "r")
+        try:
+            exec(code_parser_read.read(), {"test": test})
+        except Exception as e:
+            print("Error executing program")
+            print(e)
         code_parser_read.close()
         code_editor.close()
 
