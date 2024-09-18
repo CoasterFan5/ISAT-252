@@ -9,19 +9,19 @@ def create_multiplication_table(columns: int, column_start: int, rows: int, rows
     alignment = "^"
 
     # Headers
-    print("{0:{align}{space}}|".format('', align=alignment, space=space_amount), end=" ")
+    print(f'{"":{alignment}{space_amount}}|', end=" ")
     for column_number in range(column_start, column_start + columns):
-        print('{0:{align}{space}}'.format(column_number,align=alignment, space=space_amount), end=' ')
+        print(f'{column_number:{alignment}{space_amount}}', end=' ')
     print()
     for column_number in range(column_start, column_start + columns + 1):
-        print('{:{fill}{align}{space}}'.format("", fill="—", align=alignment, space=space_amount), end=" ")
+        print(f'{"":-{alignment}{space_amount}}', end=" ")
     print()
 
 
     for row_number in range(rows_start, rows_start + rows):
-        print('{0:{align}{space}}|'.format(row_number, align=alignment, space=space_amount), end=' ')
+        print(f'{row_number:{alignment}{space_amount}}|', end=' ')
         for column_number in range(column_start, column_start + columns):
-            print('{0:{align}{space}}'.format(column_number * row_number, align=alignment, space=space_amount), end=' ')
+            print(f'{(column_number * row_number):{alignment}{space_amount}}', end=' ')
         print()
 
 if __name__ == "__main__":
