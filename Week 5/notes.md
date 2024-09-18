@@ -46,7 +46,7 @@ Friday assessment:
 
 ## Else statement in loops:
 - Python supports using an else statement associated with either a for or while loop
-- Probably wont need it
+- Probably won't need it
 - may be handy in more complex programs
 - conflicts with break statements
 
@@ -54,7 +54,7 @@ Friday assessment:
 - Change execution from normal sequence
 - `break` - Terminate loop statement and transfer execution to the statement immediately following the loop
 - `continue` - Skip this execution of the loop, and go back to the top
-- `pass` - Used when a statement is required but you don't want any command or code to execute
+- `pass` - Used when a statement is required, but you don't want any command or code to execute
   - Probably never needed
   - Just a placeholder
 
