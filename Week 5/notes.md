@@ -99,7 +99,44 @@ Friday assessment:
         # 3 specifies a field width of 3 characters
     - The `str.format()` method
       - The second oldest
+      - Everything is the same as with F strings (See F strings are pretty cool)
+      - like this:
+        - ```python
+          print("{:>3} {:>3} {:>3}".format(i, i**2, i**3))
     - The % Operator
       - Oldest of the three
       - Older code and examples use this
       - Clunky
+      - Examples because why not:
+        - ```python
+          print("My name is %s and I am %d years old." % (name, age))
+
+## F strings are pretty cool
+- Specify types when formatting
+  - d: integer (dec)
+  - f: Float
+  - s: String
+  - b: Binary
+- Precision and decimal places
+  - .2f: Float with 2 decimal places
+  - .0f: Float rounded to the nearest whole number displayed with no decimal palces
+  - Examples:
+    - 5.2 means:
+      - 5 min width of the whole number
+      - 2: exactly 2 decimal places
+  - T use leading zeros, use:
+    - 0.52f 
+  - Number formatting stuff
+    - {:,}: Add command thousand separators
+    - {:+} Always show the sign (+ / -)
+    - {: } use a space for positive numbers
+- Formatting strings
+  - 3s: String
+    - Truncated to 3 chars if longer
+    - Unchanged if 3 chars or shorter (no padding :( )
+  - Width and alignment
+    - `>` for right alignment
+    - `<` for left alignment
+    - `^` for center alignment
+    - For numbers, the default is right alignment
+    - For strings, the default is left alignment

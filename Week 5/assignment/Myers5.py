@@ -1,5 +1,4 @@
 import math
-from warnings import catch_warnings
 
 
 def create_multiplication_table(columns: int, column_start: int, rows: int, rows_start: int):
@@ -36,7 +35,19 @@ if __name__ == "__main__":
                 int(input("How many rows would you like? ")),
                 int(input("Where should the rows start? "))
             )
-            do_try = False
+            do_prompt_try_again = True
+            while do_prompt_try_again:
+                try:
+                    yn_input = input("Would you like to continue? [y/n]: ").lower()
+                    if yn_input == "n":
+                        do_try = False
+                        do_prompt_try_again = False
+                    elif yn_input == "y":
+                        do_prompt_try_again = False
+                    else:
+                        raise ValueError
+                except ValueError:
+                    print("Bad input, please try again!")
         except ValueError:
             print("Bad input, try again!")
 

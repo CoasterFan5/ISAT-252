@@ -1,6 +1,6 @@
 # Author: Dylan Myers
 # Description: Count certain metrics for strings
-# Tests: test_cases
+# Tests: test.py
 
 
 vowel_list: list[str] = ['a', 'e', 'i', 'o', 'u']
