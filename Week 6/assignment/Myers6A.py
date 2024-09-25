@@ -1,4 +1,5 @@
-# This is going to be insane ngl
+# Assignment 6a
+# Use string functions to manipulate a users string
 
 class CustomStringFunctionHelper:
     desc: str = ""
