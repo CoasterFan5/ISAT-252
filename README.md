@@ -22,6 +22,7 @@ If it is less than 100%, I don't know why. Sorry.
 | Assignment 3 | 100%  |
 | Assignment 4 | 100%  |
 | Assignment 5 | 97%   |
+| Assignment 6 | 100%  |
 
 ## Other
 If you have any questions about this course or repo, feel free to reach out.
