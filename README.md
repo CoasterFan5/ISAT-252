@@ -12,4 +12,16 @@ This repo is structured to match the course, and it's content, see below:
 
 ## Weekly Assignments
 Weekly assignments are also provided in this repo.
-Assignments 2-4 have all been graded and received a 100%. This readme will share the grades of all assignments in the future.
+If you are using the assignments as a starting place, please note the grade chart below which is what my version of the assignment received.
+If it is less than 100%, I don't know why. Sorry.
+
+| Assignment   | Grade |
+|--------------|-------|
+| Assignment 1 | 100%  | 
+| Assignment 2 | 100%  |
+| Assignment 3 | 100%  |
+| Assignment 4 | 100%  |
+| Assignment 5 | 97%   |
+
+## Other
+If you have any questions about this course or repo, feel free to reach out.
