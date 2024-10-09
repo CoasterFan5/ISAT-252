@@ -1,3 +1,4 @@
+from operator import index
 from typing import Literal
 
 
@@ -37,7 +38,13 @@ def main():
         students.append(student_name)
 
         for grade_index in range(len(grades)):
-            grades[grade_index].append(get_valid_float(f"Enter grade for {student_name} in {subject_names[grade_index]}: "))
+            while True:
+                ui = get_valid_float(f"Enter grade for {student_name} in {subject_names[grade_index]}: ")
+                if 0 <= ui <= 100:
+                    grades[grade_index].append(ui)
+                    break
+                else:
+                    print("Grade must be between 0 and 100.")
         print("Student added!")
 
     def user_students_and_grades():
@@ -90,6 +97,42 @@ def main():
         except ValueError:
             print("That is not a valid subject name...")
 
+    def user_remove_student():
+        student_name = input("Enter student name: ")
+        for s_index in range(len(students) - 1, -1 , -1):
+            student = students[s_index]
+            if student.lower() == student_name.lower():
+                students.pop(s_index)
+                print(f"Student removed: {student}")
+
+    def user_best_subject():
+        best_subject_gpa = 0
+        best_subject_indexes = []
+        for subject_index in range(len(subject_names)):
+            this_subject_gpa = sum(grades[subject_index]) / len(grades[subject_index])
+            if this_subject_gpa > best_subject_gpa:
+                best_subject_gpa = this_subject_gpa
+                best_subject_indexes = [subject_index]
+            elif this_subject_gpa == best_subject_gpa:
+                best_subject_indexes.append(subject_index)
+        print("Best Subject(s):")
+        for subject_index in best_subject_indexes:
+            print(f"{subject_names[subject_index]} - Average grade of {best_subject_gpa}")
+
+    def user_specific_grade_change():
+        student_name = input("Enter student name: ")
+        for s_index in range(len(students)):
+            student = students[s_index]
+            if student.lower() == student_name.lower():
+                subject_name = input("Enter subject name: ")
+                subject_index = subject_names.index(subject_name.title())
+                if subject_index == -1:
+                    print("Invalid subject name...")
+                    return
+                else:
+                    new_grade = get_valid_float(f"Enter grade for {student_name} in {subject_name}: ")
+                    grades[subject_index][s_index] = new_grade
+                    print("Grade updated!")
 
     def user_exit():
         exit(0)
@@ -100,11 +143,14 @@ def main():
         ["View students average grade", user_student_average_grade],
         ["Find top student", user_find_top_student],
         ["Find subject average", user_get_subject_average],
+        ["Remove student", user_remove_student],
+        ["Find best subject", user_best_subject],
+        ["Update student grade in subject", user_specific_grade_change],
         ["Quit", user_exit]
     ]
 
     while True:
-        print("Grade Manager")
+        input("Grade Manager, press enter to continue!")
         for program_function_index in range(len(program_functions)):
             print(f"{program_function_index + 1}) {program_functions[program_function_index][0]}")
 
