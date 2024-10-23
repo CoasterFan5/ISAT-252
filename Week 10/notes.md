@@ -36,3 +36,13 @@ finally:# Always execute this, no matter what
     print("Done!")
 # See examples for a full example
 ```
+
+## Examples of data validation
+When asking a persons name, we need to ensure the input is valid, readable, and fits the expected format. A common validation method involves checking that:
+- The input isn't empty
+- The input consists of allowed characters
+  - Accent marks are not alphanumeric
+  - This is an important consideration
+- The input is not excessively long or short. 
+
+See `examples.py` for an example of input validation.
