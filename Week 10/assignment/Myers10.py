@@ -49,8 +49,11 @@ def get_valid_location(prompt: str):
             print("Invalid location, to see a list of valid locations, type 'help'")
             continue
         if len(found_locations) > 1:
-            print("Query matched multiple locations. to see a list of valid locations, type 'help'")
-            continue
+            print("Query matched multiple locations, select location number from list below")
+            for i in range(len(found_locations)):
+                print(f"{i + 1}) {found_locations[i]}")
+            found_locations[0] = found_locations[get_valid_int("Enter option number: ", 1, len(found_locations)) - 1]
+        print(f"Using: {found_locations[0]}")
         return found_locations[0]
 
 def get_valid_date(prompt: str, lower_bound: date=None, upper_bound=date.today()):
@@ -103,6 +106,8 @@ def get_valid_float(prompt: str, lower_bound=None, upper_bound=None):
 
 # region Program Specific Functionality
 
+
+
 class WaterData:
 
     location = ""
@@ -123,6 +128,8 @@ class WaterData:
     def to_string(self):
         return f"Location: {self.location}, date: {self.sample_date.strftime('%b %d, %Y')}, Water temp: {self.water_temp}, Water turbidity: {self.water_ph}, Dissolved oxygen: {self.water_turbidity}"
 
+water_data_list: list[WaterData] = []
+
 def add_data():
     print("Adding water data.")
     location = get_valid_location("Enter location: ")
@@ -134,6 +141,30 @@ def add_data():
     print("")
     print("Date Recorded")
     print("")
+    water_data_list.append(WaterData(location, sample_date, water_temp, ph, turbidity, dissolved_oxygen))
+
+def view_data():
+    if len(water_data_list) == 0:
+        print("No water data found.")
+        return
+    for water_data in water_data_list:
+        print("List of samples: ")
+        print(water_data.to_string())
+        print("")
+        return
+
+def remove_data():
+    print("Removing water data.")
+    if len(water_data_list) == 0:
+        print("No water data found.")
+        return
+    for i in range(len(water_data_list)):
+        print(f"{i + 1}) {water_data_list[i].to_string()}")
+    option_number = get_valid_int("Enter number (use 0 to cancel): ", 0, len(water_data_list))
+    if option_number == 0:
+        print("Canceling")
+        return
+    water_data_list.pop(option_number - 1)
 
 # endregion
 
@@ -148,10 +179,13 @@ class SelectionOption:
 def main():
 
     def quit_program():
+        print("Bye bye!")
         exit()
 
     options = [
         SelectionOption("Add Data", add_data),
+        SelectionOption("View Data", view_data),
+        SelectionOption("Remove Data", remove_data),
         SelectionOption("Quit", quit_program)
     ]
 
@@ -163,6 +197,7 @@ def main():
         selected_option = get_valid_int("Select Option: ", lower_bound=1, upper_bound=len(options))
         print("")
         options[selected_option - 1].func()
+        print("")
 
 # endregion
 
