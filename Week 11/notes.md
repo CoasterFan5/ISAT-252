@@ -172,5 +172,17 @@ os.mkdir("test")
 - Things are not always formatted the way you want
   - Use `.strip()` to get rid of leading and trailing whitespace
 
+## Seek
+- Allows you to reposition the file pointed to a desired location within the file
+- This permits you to read from or write to a specific location in the file
+
+## Seek in action
+- Suppose you have a file with the contents `HELLOWORLD` and you want to replace W with X without altering the rest of the file. 
+- You can open the file in `r+` mode
+- Find the position of W, in this case it's position 5
+- Use seek to position the pointer
+- Write the new character to overwrite the character
+- Optionally verify the change. 
+
 
 
