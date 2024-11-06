@@ -60,3 +60,18 @@ with open('new_data.csv', 'w', newline='') as file:
 ## What about DictReader?
 - We haven't used it yet
 - Despite it being a good tool, we can just ignore it (nice)
+
+## Python's strengths in Data Processing
+- Versatility
+- Rich Ecosystem
+- Ease of Use
+- Automation Capabilities
+- Data integration
+- Enhanced Functionality 
+- Workflow Automation
+- Excel Automation
+- Database Interactions
+
+## Python and MS Access
+- I don't even know anymore
+- 
