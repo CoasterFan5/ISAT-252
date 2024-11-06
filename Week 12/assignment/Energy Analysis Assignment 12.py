@@ -25,6 +25,13 @@ class MenuOption:
         self.name = name
         self.func = func
 
+def get_user_category(headers):
+    cat_list = headers[1:]
+
+    for i in range(len(cat_list)):
+        print(f"{i + 1}) {cat_list[i]}")
+    return get_valid_int("Select category number: ", lower_bound=1, upper_bound=len(cat_list))
+
 def read_csv(filename):
     with open(filename, "r") as file_object:
         data = list(csv.reader(file_object, dialect="excel"))
@@ -37,15 +44,12 @@ def count_states(headers, data):
     number_of_states = len(set(state_list))
     print(f"There are {number_of_states} states.")
 
-    pass
-
 def total_expenditure(headers, data):
     total_cost = 0
     for row in data:
         for i in range(1, len(row)):
             total_cost += float(row[i])
     print(f"Total expenditure across all categories is {format_energy_use_as_dollar_amount(total_cost)}")
-    pass
 
 def highest_expenditure_state(headers, data):
     highest_expenditure_total = 0
@@ -71,19 +75,35 @@ def lowest_expenditure_state(headers, data):
             lowest_expenditure_name = row[0]
     print(
         f"Lowest expenditure state is {lowest_expenditure_name} with {format_energy_use_as_dollar_amount(lowest_expenditure_total)}")
-    pass
 
-def highest_in_category(data, category_index):
-    # TODO: Implement this function to find the state with highest expenditure in a category
-    pass
+def highest_in_category(headers, data):
+    high = 0
+    state_name = ""
+    category_index = get_user_category(headers)
+    for row in data:
+        if float(row[category_index]) > high:
+            high = float(row[category_index])
+            state_name = row[0]
 
-def average_in_category(data, category_index):
-    # TODO: Implement this function to calculate the average expenditure in a category
-    pass
+    print(f"\n{state_name} is the highest in {headers[category_index]} with {format_energy_use_as_dollar_amount(high)}")
 
-def export_summary(data, filename):
-    # TODO: Implement this function to export a summary to a new CSV file
-    pass
+def average_in_category(headers, data):
+    category = get_user_category(headers)
+    total = 0
+    for row in data:
+        total += float(row[category])
+    average = total / len(data)
+    print(f"Average spend on {headers[category]} is {format_energy_use_as_dollar_amount(average)}")
+
+def export_summary(headers, data):
+    csv_writer = csv.writer(open("energy_summary.csv", "w"))
+    csv_writer.writerow(["state", "expenditure"])
+    for row in data:
+        total = 0
+        for i in range(1, len(row)):
+            total += float(row[i])
+        csv_writer.writerow([row[0], format_energy_use_as_dollar_amount(total)])
+    print("Summary saved as energy_summary.csv")
 
 def exit_program(headers, data):
     exit()
@@ -95,8 +115,10 @@ def main():
         MenuOption("Total expenditure", total_expenditure),
         MenuOption("Highest expenditure state", highest_expenditure_state),
         MenuOption("Lowest expenditure state", lowest_expenditure_state),
+        MenuOption("High state expenditure in category", highest_in_category),
+        MenuOption("Average expenditure in category", average_in_category),
+        MenuOption("Export summary", export_summary),
         MenuOption("Exit", exit_program),
-
     ]
 
     filename = "energy_data.csv" # Make sure this matches the name of your CSV file
@@ -112,10 +134,8 @@ def main():
         
         choice = get_valid_int("Enter option number: ", 1, len(menu_options))
 
-        print("-" * 15)
-        print("\n")
+        print("-" * 15 + "\n")
         menu_options[choice - 1].func(headers, data)
-        print("\n")
 
 if __name__ == "__main__":
     main()
