@@ -32,6 +32,43 @@ def get_user_category(headers):
         print(f"{i + 1}) {cat_list[i]}")
     return get_valid_int("Select category number: ", lower_bound=1, upper_bound=len(cat_list))
 
+def get_state_list(data):
+    state_list = []
+    for row in data:
+        state_list.append(row[0])
+    return state_list
+
+def user_state_input(data):
+    state_list = get_state_list(data)
+    while True:
+        user_input = input("Enter state name: ").lower()
+        for state in state_list:
+            if user_input == str(state).lower():
+                return state
+        # find the most similar state
+        most_similar_state = None
+        highest_score = 0
+        for state in state_list:
+            score = 0
+            for letter_index in range(len(user_input)):
+                letter = user_input[letter_index]
+                if letter in str(state).lower():
+                    if str(state[letter_index]).lower() == str(letter).lower():
+                        score += 3
+                    else:
+                        score += 1
+            if score > highest_score:
+                highest_score = score
+                most_similar_state = state
+        if most_similar_state is None:
+            print("Nothing found, try again.")
+            continue
+        us = input(f"State not found, did you mean {most_similar_state}? (y/n)").lower()
+        if us == "y":
+            return most_similar_state
+        continue
+
+
 def read_csv(filename):
     with open(filename, "r") as file_object:
         data = list(csv.reader(file_object, dialect="excel"))
@@ -105,6 +142,27 @@ def export_summary(headers, data):
         csv_writer.writerow([row[0], format_energy_use_as_dollar_amount(total)])
     print("Summary saved as energy_summary.csv")
 
+def compare_states(headers, data):
+    state_list = get_state_list(data)
+    state_1 = user_state_input(data)
+    state_2 = user_state_input(data)
+    state_index_1 = state_list.index(state_1)
+    state_index_2 = state_list.index(state_2)
+
+    # total consumption
+    total_consumption_state_1 = 0
+    total_consumption_state_2 = 0
+    for i in range(1, len(headers)):
+        total_consumption_state_1 += float(data[state_index_1][i])
+        total_consumption_state_2 += float(data[state_index_2][i])
+
+    print(f"{state_1}: {format_energy_use_as_dollar_amount(total_consumption_state_1)}")
+    print(f"{state_2}: {format_energy_use_as_dollar_amount(total_consumption_state_2)}")
+
+    percent_diff = (total_consumption_state_1 / total_consumption_state_2) * 100
+    print(f"{state_1} uses {percent_diff:.2f}% the energy of {state_2}")
+
+
 def exit_program(headers, data):
     exit()
 
@@ -118,6 +176,7 @@ def main():
         MenuOption("High state expenditure in category", highest_in_category),
         MenuOption("Average expenditure in category", average_in_category),
         MenuOption("Export summary", export_summary),
+        MenuOption("Compare states", compare_states),
         MenuOption("Exit", exit_program),
     ]
 
@@ -136,6 +195,7 @@ def main():
 
         print("-" * 15 + "\n")
         menu_options[choice - 1].func(headers, data)
+        print("")
 
 if __name__ == "__main__":
     main()
