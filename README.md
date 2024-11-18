@@ -15,14 +15,17 @@ Weekly assignments are also provided in this repo.
 If you are using the assignments as a starting place, please note the grade chart below which is what my version of the assignment received.
 If it is less than 100%, I don't know why. Sorry.
 
-| Assignment   | Grade |
-|--------------|-------|
-| Assignment 1 | 100%  | 
-| Assignment 2 | 100%  |
-| Assignment 3 | 100%  |
-| Assignment 4 | 100%  |
-| Assignment 5 | 97%   |
-| Assignment 6 | 100%  |
+| Assignment    | Grade |
+|---------------|-------|
+| Assignment 1  | 100%  | 
+| Assignment 2  | 100%  |
+| Assignment 3  | 100%  |
+| Assignment 4  | 100%  |
+| Assignment 5  | 97%   |
+| Assignment 6  | 100%  |
+| Assignment 8  | 100%  |
+| Assignment 9  | n/a   |
+| Assignment 10 | 100%  |
 
 ## Other
 If you have any questions about this course or repo, feel free to reach out.
