@@ -1,0 +1,9 @@
+ProductID,MachineID,Operator,ProductionTime,DefectRate,BatchSize,MaterialCost,Status
+1001,1,John,5.5,0.02,100,250.0,complete
+1002,2,Susan,4.0,0.01,150,350.0,complete
+1003,1,Mary,6.2,0.03,120,300.0,in progress
+1004,3,John,7.0,0.05,200,500.0,complete
+1005,2,Susan,3.8,0.01,150,360.0,complete
+1006,1,Mary,5.6,0.04,100,275.0,in progress
+1007,3,John,4.5,0.03,200,480.0,complete
+1008,1,Susan,6.1,0.02,120,320.0,in progress
